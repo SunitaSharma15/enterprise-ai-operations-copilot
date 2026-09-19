@@ -1,0 +1,26 @@
+### 1. Direct lookup - zero AI tokens
+GET http://localhost:8081/api/v1/orders/ORD-1001/status
+
+### 2. General chat - no tools
+POST http://localhost:8081/api/v1/chat
+Content-Type: application/json
+
+{
+  "message": "Explain incident severity in two sentences."
+}
+
+### 3. Natural-language order chat - tool enabled
+POST http://localhost:8081/api/v1/orders/chat
+Content-Type: application/json
+
+{
+  "message": "What is the status of ORD-1002?"
+}
+
+### 4. Structured incident classification
+POST http://localhost:8081/api/v1/incidents/classify
+Content-Type: application/json
+
+{
+  "description": "A duplicate payment was posted for an order."
+}

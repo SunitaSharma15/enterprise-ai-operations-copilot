@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "Part 1 - Cost-Optimized Spring AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8081" }
+  ],
+  "item": [
+    {
+      "name": "1 - Direct order status (zero AI tokens)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/orders/ORD-1001/status"
+      }
+    },
+    {
+      "name": "2 - General chat (no tools)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"Explain incident severity in two sentences.\"\n}" },
+        "url": "{{baseUrl}}/api/v1/chat"
+      }
+    },
+    {
+      "name": "3 - Natural-language order chat (tool enabled)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"What is the status of ORD-1002?\"\n}" },
+        "url": "{{baseUrl}}/api/v1/orders/chat"
+      }
+    },
+    {
+      "name": "4 - Structured incident classification",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"description\": \"A duplicate payment was posted for an order.\"\n}" },
+        "url": "{{baseUrl}}/api/v1/incidents/classify"
+      }
+    }
+  ]
+}
