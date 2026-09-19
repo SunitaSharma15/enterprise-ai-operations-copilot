@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: enterprise-ai-copilot-part-1
+  ai:
+    openai:
+      api-key: ${OPENAI-API-KEY}
+      chat:
+        options:
+          model: gpt-4.1-mini
+          temperature: 0.2
+          max-completion-tokens: 250
+server:
+  port: 8081
